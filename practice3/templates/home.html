@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Site</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Course Baba</h1>
+        <h3>It's: {{ current_date | date:"F d, Y, g:i:s a " }}</h3>
+        <h2>Here you can learn about driving licenses.</h2>
+    </header>
+    <main>
+        <p>Name: {{ name }}</p>
+        <p>Age: {{ age }}</p>
+        <p>City: {{ city }}</p>
+        <p>Numbers of courses: {{ lst | join:", " }}</p>
+        <p>Disclaimer: {{ slogan.0 }}</p>
+        <p>Disclaimer: {{ slogan.1 }}</p>
+        <p>Disclaimer: {{ slogan.2 }}</p>
+    </main>
+
+     <!-- conditional statement -->
+      {% if age < 19 %}
+        <p>You will not get driving license.</p>
+        {%elif age >= 19 and age < 25 %}
+          <p>You can get driving license.</p>
+        {% else %}
+          <p>You are over 25.</p>
+      {% endif %}
+
+      <!-- loop statement -->
+        <ul>
+          {% for i in courses %}
+            <li>{{ i.id }} {{ i.name }} - {{ i.fee }}</li>
+          {% endfor %}
